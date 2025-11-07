@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reuse Hub Marketplace</title>
+  <style>
+    :root {
+      --bg-light: #f9f9f9;
+      --bg-dark: #121212;
+      --text-light: #000;
+      --text-dark: #fff;
+      --card-light: #fff;
+      --card-dark: #1e1e1e;
+      --accent: #00b894;
+      --nav-light: #fff;
+      --nav-dark: #000;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: all 0.3s ease;
+    }
+
+    body.dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    header {
+      background-color: var(--nav-light);
+      color: var(--text-light);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--accent);
+      transition: all 0.3s ease;
+    }
+
+    body.dark-mode header {
+      background-color: var(--nav-dark);
+      color: var(--text-dark);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    nav a {
+      color: inherit;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 500;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .theme-toggle:hover {
+      background-color: var(--accent);
+      color: white;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      padding: 40px;
+    }
+
+    .card {
+      background-color: var(--card-light);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    body.dark-mode .card {
+      background-color: var(--card-dark);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .certified {
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .kyc-form {
+      padding: 20px;
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: var(--card-light);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    body.dark-mode .kyc-form {
+      background-color: var(--card-dark);
+    }
+
+    .kyc-form input, .kyc-form button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .kyc-form button {
+      background-color: var(--accent);
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+    }
+
+    footer {
+      background-color: var(--nav-light);
+      color: var(--text-light);
+      text-align: center;
+      padding: 20px;
+      border-top: 2px solid var(--accent);
+      transition: all 0.3s ease;
+    }
+
+    body.dark-mode footer {
+      background-color: var(--nav-dark);
+      color: var(--text-dark);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Reuse Hub Marketplace</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#kyc">KYC</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </nav>
+  </header>
+
+  <section id="products" class="container"></section>
+
+  <section id="kyc">
+    <form class="kyc-form">
+      <h2>Basic KYC Verification</h2>
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="text" placeholder="Address" required>
+      <label>ID Proof:</label>
+      <input type="file" accept="image/*,application/pdf" required>
+      <label>Address Proof:</label>
+      <input type="file" accept="image/*,application/pdf" required>
+      <label>Photo:</label>
+      <input type="file" accept="image/*" required>
+      <label>Signature:</label>
+      <input type="file" accept="image/*" required>
+      <button type="submit">Submit KYC</button>
+    </form>
+  </section>
+
+  <footer id="contact">
+    <p><strong>Contact Us:</strong></p>
+    <p>📞 7305614354 | ☎️ 044 79603993</p>
+    <p>📧 Email: <a href="mailto:rh1999@gmail.com">rh1999@gmail.com</a></p>
+    <p>🏠 Address: No.01 Cross Street, Straight Road, Pallavaram, Chennai, TN 600117</p>
+    <p>&copy; 2025 Reuse Hub. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const products = [
+      {name: 'iPhone 12 Pro', price: '₹45,000', grade: 'A', warranty: '2 Years', image: 'https://images.unsplash.com/photo-1603898037225-39cfeddfb91a', desc: '128GB, Graphite, Excellent Condition'},
+      {name: 'Dell Inspiron Laptop', price: '₹38,000', grade: 'A', warranty: '3 Years', image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8', desc: 'Core i5, 8GB RAM, SSD 512GB'},
+      {name: 'Samsung LED TV 43"', price: '₹22,000', grade: 'B', warranty: '2 Years', image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3', desc: 'Smart TV, Full HD, Remote included'},
+      {name: 'LG Washing Machine', price: '₹15,000', grade: 'A', warranty: '3 Years', image: 'https://images.unsplash.com/photo-1581579185169-9a2420cf9b16', desc: '6kg Front Load, Low Noise'},
+      {name: 'Sony Bluetooth Speaker', price: '₹5,000', grade: 'A', warranty: '1 Year', image: 'https://images.unsplash.com/photo-1585386959984-a4155224a1d1', desc: 'Deep Bass, Portable, Certified'},
+      {name: 'Canon DSLR Camera', price: '₹28,000', grade: 'A', warranty: '2 Years', image: 'https://images.unsplash.com/photo-1504215680853-026ed2a45def', desc: 'EOS 700D, 18-55mm lens, Charger'},
+      {name: 'Apple Watch Series 6', price: '₹20,000', grade: 'A', warranty: '1 Year', image: 'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1', desc: 'GPS + Cellular, Blue Aluminum Case'},
+      {name: 'Mi Air Purifier', price: '₹8,000', grade: 'B', warranty: '1 Year', image: 'https://images.unsplash.com/photo-1616627984661-dae3a91e4b69', desc: 'HEPA Filter, Smart Control'},
+      {name: 'IKEA Office Chair', price: '₹7,500', grade: 'A', warranty: '3 Years', image: 'https://images.unsplash.com/photo-1589571894960-20bbe2828c13', desc: 'Ergonomic, Adjustable Height'},
+      {name: 'HP LaserJet Printer', price: '₹12,000', grade: 'A', warranty: '2 Years', image: 'https://images.unsplash.com/photo-1591696205602-2f950c417cb9', desc: 'Wireless Printing, Fast Output'},
+      {name: 'Bajaj Mixer Grinder', price: '₹3,500', grade: 'A', warranty: '2 Years', image: 'https://images.unsplash.com/photo-1590080875831-9fdcb9a9db1d', desc: '3 Jars, 750W Motor, Durable'},
+      {name: 'Whirlpool Refrigerator', price: '₹18,000', grade: 'B', warranty: '3 Years', image: 'https://images.unsplash.com/photo-1586201375761-83865001e17d', desc: '190L, Single Door, Low Power'},
+      {name: 'Asus Gaming Monitor', price: '₹16,000', grade: 'A', warranty: '2 Years', image: 'https://images.unsplash.com/photo-1587202372775-98927b10b08c', desc: '144Hz, 24-inch, HDMI Port'},
+      {name: 'Philips Air Fryer', price: '₹6,500', grade: 'A', warranty: '1 Year', image: 'https://images.unsplash.com/photo-1600185365483-26d7e9fa46e2', desc: 'Rapid Air Tech, Easy Clean'},
+      {name: 'Lenovo Tablet M10', price: '₹14,000', grade: 'A', warranty: '2 Years', image: 'https://images.unsplash.com/photo-1603791440384-56cd371ee9a7', desc: '10-inch Display, 64GB, LTE'},
+      {name: 'Apple AirPods Pro', price: '₹17,000', grade: 'A', warranty: '1 Year', image: 'https://images.unsplash.com/photo-1573497019418-b400bb3ab067', desc: 'Noise Cancelling, Wireless'},
+      {name: 'Nike Shoes', price: '₹4,500', grade: 'A', warranty: '1 Year', image: 'https://images.unsplash.com/photo-1519741497674-611481863552', desc: 'Running Shoes, Light Weight'},
+      {name: 'Wooden Study Table', price: '₹9,000', grade: 'A', warranty: '3 Years', image: 'https://images.unsplash.com/photo-1606813902779-3e06b6b4e8f7', desc: 'Solid Wood, Minimalist Design'},
+      {name: 'Boat Headphones', price: '₹2,000', grade: 'A', warranty: '1 Year', image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e', desc: 'Over-Ear, Extra Bass, Mic'},
+      {name: 'OnePlus 8T', price: '₹30,000', grade: 'A', warranty: '2 Years', image: 'https://images.unsplash.com/photo-1606229150406-3ed10a97e0d0', desc: '8GB RAM, 128GB, Excellent Battery'}
+    ];
+
+    const productContainer = document.querySelector('.container');
+    products.forEach(p => {
+      const card = document.createElement('div');
+      card.classList.add('card');
+      card.innerHTML = `
+        <img src="${p.image}" alt="${p.name}">
+        <h3>${p.name}</h3>
+        <p>${p.desc}</p>
+        <p><strong>Grade:</strong> ${p.grade}</p>
+        <p><strong>Price:</strong> ${p.price}</p>
+        <p><strong>Warranty:</strong> ${p.warranty}</p>
+        <p class="certified">Reuse Hub Certified ✅</p>
+        <p><strong>1 Week Free Return</strong></p>
+      `;
+      productContainer.appendChild(card);
+    });
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      const btn = document.querySelector('.theme-toggle');
+      btn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    }
+  </script>
+</body>
+</html>
